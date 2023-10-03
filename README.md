@@ -203,3 +203,24 @@ This file **should not be commited** to your VCS. This file can contain sensitiv
 ### Terraform directory
 
 `.terraform` directory contains binaries of Terraform providers.
+
+## Issues with Terraform Cloud Login and GitPod Workspace
+
+When attempting to run `terraform login`, it will launch in bash a wysiwyg view to generate a token. However, it does not work as expected in GitPod VSCode in the browser.
+
+The workaround is to manually generate a token in Terraform Cloud via: https://app.terraform.io/app/settings/tokens?source=terraform-login
+
+Then create the file manually here:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Provide the following code (replace your token in the file):
+
+```json
+credentials "app.terraform.io" {
+  token = "xxxxxx.atlasv1.zzzzzzzzzzzzz"
+}
+```
