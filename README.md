@@ -2,9 +2,15 @@
 
 # Weekly Journals
 
+## Week 0
+
+[Week 0 journal](journal/week0.md)
+
 <img width="1401" alt="image" src="https://github.com/jimmysmits/terraform-beginner-bootcamp-2023/assets/61211859/5e2a9015-60bb-4deb-9e4b-2bd2edbe3f6b">
 
 ## Week 1
+
+[Week 1 journal](journal/week1.md)
 
 <img width="1437" alt="image" src="https://github.com/jimmysmits/terraform-beginner-bootcamp-2023/assets/61211859/dd8b1e3d-6fa0-436a-afc9-ecc8e4e10e80">
 
