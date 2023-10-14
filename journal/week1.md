@@ -16,3 +16,55 @@ PROJECT_ROOT
 ```
 
 [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
+
+## Terraform and Input Variables
+
+### Terraform Cloud Variables
+
+In Terraform we can set two kind of variables:
+- Enviroment Variables - those you would set in your bash terminal (e.g. AWS credentials)
+- Terraform Variables - those that you would normally set in your `.tfvars` file
+
+We can set Terraform Cloud variables to be sensitive so they are not shown visibliy in the UI.
+
+### Loading Terraform Input Variables
+
+[Terraform Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)
+
+### var flag
+We can use the `-var` flag to set an input variable or override a variable in the tfvars file eg. `terraform -var user_uuid="my-user_uuid"`
+
+### var-file flag
+
+- TODO: Document this flag
+
+### terraform.tvfars
+
+This is the default file to load in Tterraform variables in bulk
+
+### auto.tfvars
+
+- TODO: Document this functionality for Terraform Cloud
+
+### order of terraform variables
+
+- TODO: Document which Terraform variables takes precedence
+
+## Dealing with configuration drift
+
+If you lose your state files, you most likely have to tear down all you cloud infrastructure manually
+
+You can use Terraform import but it will not work for all cloud resources. You need to check the Terraform providers documentation
+
+### Fix missing resourcers with Terraform import
+
+[Terraform import](https://developer.hashicorp.com/terraform/language/import)
+
+`terrafrom import aws_s3_bucket.bucket bucket-name`
+
+[AWS S3 bucket import](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)
+
+### Fix manual configuration
+
+- If someone goes and delete or modifies cloud resource manually through ClickOps. 
+- If we run Terraform plan with the attampt to put the infrastructure back into the expected state (fixing configuration drift)
