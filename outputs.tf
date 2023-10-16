@@ -1,3 +1,4 @@
 output "bucket_name" {
-    value = aws_s3_bucket.terraform-bootcamp-simple-s3-bucket.bucket
+  description = "bucket name for our static website hosting"
+  value = module.terrahouse_aws.bucket_name
 }
