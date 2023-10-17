@@ -103,3 +103,45 @@ module "terrahouse_aws" {
   source = "./modules/terrahouse_aws"clear
 }
 ```
+
+## Considerations when using ChatGPT to write Terraform
+
+LLM such as ChatGPT may not be trained on the latest documention or information about Terraform (since it is last update in 2021)
+
+It may likely produce older examples that could be depcrated (this often affects the providers, since they change more often)
+
+## Working with files in Terraform
+
+### fileexists function
+
+This is a built-in Terrafom function to check the existence of a a file
+
+```tf
+  validation {
+    condition     = fileexists(var.index_html_file_path)
+    error_message = "The specified index.html file path is not a valid file or does not exist."
+  }
+```
+
+[fileexists function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+
+### filemd5 function
+
+filemd5 is a variant of md5 that hashes the contents of a given file rather than a literal string.
+
+[filemd5 function](https://developer.hashicorp.com/terraform/language/functions/filemd5)
+
+### Path variable
+
+In Terraform ther is special variable called `path` that allows us to referece local paths
+- `pat.module` - get the path for the current module
+- `pat.root` - get the path for the root module
+[Special path variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+```tf
+resource "aws_s3_object" "index_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = ${path.root}/public/index.html
+}
+```
