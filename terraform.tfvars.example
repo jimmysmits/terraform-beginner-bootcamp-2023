@@ -1,2 +1,4 @@
 user_uuid = "841200a9-31f7-446a-88b6-85cc75aef9c0"
 bucket_name = "9bzoj5o7iv3pfq4ujsfwf1ave9qysurg"
+index_html_file_path = "/workspace/terraform-beginner-bootcamp-2023/public/index.html"
+error_html_file_path = "/workspace/terraform-beginner-bootcamp-2023/public/error.html"

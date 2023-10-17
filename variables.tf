@@ -7,3 +7,14 @@ variable "bucket_name" {
   description = "Name of the S3 bucket"
   type        = string
 }
+
+variable "index_html_file_path" {
+  description = "Path to the index.html file"
+  type        = string
+}
+
+variable "error_html_file_path" {
+  description = "Path to the index.html file"
+  type        = string
+}
+
