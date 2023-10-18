@@ -159,6 +159,7 @@ filemd5 is a variant of md5 that hashes the contents of a given file rather than
 In Terraform ther is special variable called `path` that allows us to referece local paths
 - `pat.module` - get the path for the current module
 - `pat.root` - get the path for the root module
+
 [Special path variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
 
 ```tf
@@ -168,3 +169,30 @@ resource "aws_s3_object" "index_html" {
   source = ${path.root}/public/index.html
 }
 ```
+
+## Terraform Locals
+
+```tf
+locals {
+    s3_origin_id = "MyS3Origin"
+}
+
+```
+
+[Local values](https://developer.hashicorp.com/terraform/language/values/locals)
+
+## Terraform data sources
+
+This allows us to source data from cloud resources. This is useful when we want to reference cloud resources without importing them.
+
+[Data sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+```tf
+data "aws_caller_identity" "current" {}
+
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+```
+
+[Example above](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity)
