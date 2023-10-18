@@ -170,7 +170,9 @@ resource "aws_s3_object" "index_html" {
 }
 ```
 
-## Terraform Locals
+## Terraform locals
+
+Locals allow us to define local variables. They can be very useful when we need to transform data into another format and have it referenced as a variable.
 
 ```tf
 locals {
@@ -196,3 +198,14 @@ output "account_id" {
 ```
 
 [Example above](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity)
+
+## Working with JSON
+
+We use the `jsonencode` function to create the JSON policy inline in the HCL
+
+```tf
+> jsonencode({"hello"="world"})
+{"hello":"world"}
+```
+
+[jsonencode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
