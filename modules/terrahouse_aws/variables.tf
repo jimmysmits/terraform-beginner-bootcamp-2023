@@ -38,3 +38,21 @@ variable "error_html_file_path" {
   }
 }
 
+variable "content_version" {
+  description = "The content version, a positive integer starting at 1."
+  type        = number
+  validation {
+    condition = var.content_version % 1 == 0
+    error_message = "Content version must be an integer."
+  }
+  validation {
+    condition = var.content_version > 0
+    error_message = "Content version must be a positive number."
+  }
+  validation {
+    condition = var.content_version >= 1
+    error_message = "Content version must be greater than or equal to 1."
+  }
+  default     = 1 # You can change the default value if needed.
+}
+

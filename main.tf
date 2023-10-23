@@ -14,4 +14,5 @@ module "terrahouse_aws" {
   bucket_name = var.bucket_name
   error_html_file_path = var.error_html_file_path
   index_html_file_path = var.index_html_file_path
+  content_version = var.content_version
 }
